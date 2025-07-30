@@ -1,17 +1,18 @@
 # LockPlot Landing Page
 
-A simple coming soon page for LockPlot.com
+A coming soon page for LockPlot.com
 
-## Deployment
+## About
 
-This site is deployed using GitHub Pages. Any push to the main branch will automatically update the live site.
+This repository contains a simple landing page for LockPlot, a real estate platform focused on priority access rights.
 
-## Custom Domain
+## Technologies Used
 
-The site uses lockplot.com as a custom domain. DNS configuration:
-- CNAME record: lockplot.com → [yourusername].github.io
-- Or A records for apex domain pointing to GitHub Pages IPs
+- HTML5
+- CSS3
+- Bootstrap 5
+- Google Fonts
 
-## Email Collection
+## License
 
-To enable email collection, sign up for a free Formspree account and replace `YOUR_FORM_ID` in index.html with your actual form ID.
+© 2025 LockPlot. All rights reserved.
