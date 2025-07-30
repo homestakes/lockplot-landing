@@ -106,10 +106,19 @@
         
         .logo-container {
             margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
         
-        .logo-container img {
-            height: 60px;
+        .logo-icon {
+            height: 50px;
+            width: auto;
+        }
+        
+        .logo-text {
+            height: 35px;
             width: auto;
         }
         
@@ -223,8 +232,12 @@
         
         /* Mobile responsiveness */
         @media (max-width: 768px) {
-            .logo-container img {
-                height: 50px;
+            .logo-icon {
+                height: 40px;
+            }
+            
+            .logo-text {
+                height: 28px;
             }
             
             .tagline {
@@ -268,7 +281,8 @@
     <div class="container text-center">
         <!-- Logo -->
         <div class="logo-container">
-            <img src="logo-dark.svg" alt="LockPlot">
+            <img src="LP_logo_1.svg" alt="" class="logo-icon">
+            <img src="logo-text1.svg" alt="LockPlot" class="logo-text">
         </div>
         
         <p class="coming-soon">Coming Soon</p>
