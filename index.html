@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="LockPlot - The future of real estate priority access. Coming soon.">
-    <meta name="keywords" content="LockPlot, real estate, priority access, coming soon">
+    <meta name="description" content="LockPlot - Priority access rights for real estate. Coming soon.">
+    <meta name="keywords" content="LockPlot, real estate, priority access, right of first offer, coming soon">
     <title>LockPlot | Coming Soon</title>
     
     <!-- Bootstrap 5 CSS -->
@@ -12,13 +12,31 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css">
     
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=Archivo:wght@400;500;600;700&family=Instrument+Serif&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --text-light: #ecf0f1;
-            --text-dark: #2c3e50;
+            /* LockPlot Brand Colors */
+            --lp-primary: #C53557;
+            --lp-accent: #F2D69A;
+            --lp-secondary: #f5f4f8;
+            --lp-gray-100: #f9f8fa;
+            --lp-gray-200: #f5f4f8;
+            --lp-gray-300: #efecf3;
+            --lp-gray-400: #d5d2dc;
+            --lp-gray-500: #bbb7c5;
+            --lp-gray-600: #9691a4;
+            --lp-gray-700: #666276;
+            --lp-gray-800: #454056;
+            --lp-gray-900: #1f1b2d;
+            
+            /* Font Families */
+            --lp-font-family-primary: 'Inter Tight', sans-serif;
+            --lp-font-family-secondary: 'Archivo', sans-serif;
+            --lp-font-family-display: 'Instrument Serif', serif;
         }
         
         * {
@@ -28,39 +46,50 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: var(--lp-font-family-primary);
+            background: var(--lp-gray-100);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--lp-gray-900);
             position: relative;
             overflow: hidden;
         }
         
-        /* Animated background shapes */
+        /* Subtle gradient background */
+        .bg-gradient-subtle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(197, 53, 87, 0.05) 0%, rgba(242, 214, 154, 0.08) 100%);
+            z-index: 0;
+        }
+        
+        /* Animated accent shapes */
         .bg-shape {
             position: absolute;
-            opacity: 0.1;
+            opacity: 0.05;
         }
         
         .bg-shape-1 {
-            width: 300px;
-            height: 300px;
-            background: white;
+            width: 400px;
+            height: 400px;
+            background: var(--lp-accent);
             border-radius: 50%;
-            top: -150px;
+            top: -200px;
             right: -100px;
             animation: float 20s ease-in-out infinite;
         }
         
         .bg-shape-2 {
-            width: 200px;
-            height: 200px;
-            background: white;
+            width: 300px;
+            height: 300px;
+            background: var(--lp-primary);
             border-radius: 50%;
-            bottom: -100px;
+            bottom: -150px;
             left: -50px;
             animation: float 15s ease-in-out infinite reverse;
         }
@@ -75,96 +104,112 @@
             z-index: 1;
         }
         
-        .logo {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            letter-spacing: -2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        .logo-container {
+            margin-bottom: 2rem;
+        }
+        
+        .logo-container img {
+            height: 60px;
+            width: auto;
         }
         
         .tagline {
-            font-size: 1.5rem;
-            font-weight: 300;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            font-family: var(--lp-font-family-display);
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--lp-gray-800);
+        }
+        
+        .subtitle {
+            font-family: var(--lp-font-family-primary);
+            font-size: 1.125rem;
+            font-weight: 400;
+            color: var(--lp-gray-600);
+            margin-bottom: 3rem;
         }
         
         .coming-soon {
-            font-size: 1.2rem;
+            font-family: var(--lp-font-family-secondary);
+            font-size: 0.875rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             margin-bottom: 3rem;
-            opacity: 0.8;
+            color: var(--lp-primary);
+            font-weight: 600;
         }
         
         .email-form {
-            max-width: 400px;
+            max-width: 500px;
             margin: 0 auto 3rem;
         }
         
         .form-control {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 50px;
+            background: white;
+            border: 1px solid var(--lp-gray-300);
+            color: var(--lp-gray-800);
+            padding: 14px 20px;
+            border-radius: 0.375rem;
             font-size: 1rem;
-            transition: all 0.3s ease;
+            font-family: var(--lp-font-family-primary);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .form-control:focus {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.15);
-            color: white;
+            background: white;
+            border-color: var(--lp-primary);
+            box-shadow: 0 0 0 0.2rem rgba(197, 53, 87, 0.15);
+            color: var(--lp-gray-900);
+            outline: none;
         }
         
         .form-control::placeholder {
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--lp-gray-500);
         }
         
         .btn-notify {
-            background: white;
-            color: var(--secondary-color);
+            background: var(--lp-primary);
+            color: white;
             border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
+            padding: 14px 32px;
+            border-radius: 0.375rem;
             font-weight: 600;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
+            font-family: var(--lp-font-family-primary);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1rem;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
         }
         
         .btn-notify:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            background: #f8f9fa;
-            color: var(--secondary-color);
+            background: #9B2743; /* shade of primary */
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(197, 53, 87, 0.2);
+            color: white;
         }
         
         .social-links {
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
         
         .social-links a {
             display: inline-block;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
+            width: 44px;
+            height: 44px;
+            line-height: 44px;
             text-align: center;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            margin: 0 10px;
-            transition: all 0.3s ease;
+            background: var(--lp-gray-200);
+            color: var(--lp-gray-600);
+            margin: 0 8px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
         }
         
         .social-links a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
+            background: var(--lp-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         
         .copyright {
@@ -172,45 +217,63 @@
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 0.9rem;
-            opacity: 0.7;
+            font-size: 0.875rem;
+            color: var(--lp-gray-500);
         }
         
         /* Mobile responsiveness */
         @media (max-width: 768px) {
-            .logo {
-                font-size: 2.5rem;
+            .logo-container img {
+                height: 50px;
             }
             
             .tagline {
-                font-size: 1.2rem;
+                font-size: 1.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
             }
             
             .coming-soon {
-                font-size: 1rem;
+                font-size: 0.75rem;
             }
         }
         
         /* Form success message */
         .success-message {
             display: none;
-            background: rgba(39, 174, 96, 0.2);
-            border: 1px solid rgba(39, 174, 96, 0.5);
-            padding: 15px;
-            border-radius: 10px;
+            background: #D4FFF0;
+            border: 1px solid #07c98b;
+            padding: 16px;
+            border-radius: 0.375rem;
             margin-top: 20px;
+            color: var(--lp-gray-800);
+            font-size: 0.875rem;
+        }
+        
+        .success-message i {
+            color: #07c98b;
         }
     </style>
 </head>
 <body>
+    <!-- Subtle gradient background -->
+    <div class="bg-gradient-subtle"></div>
+    
     <!-- Animated background shapes -->
     <div class="bg-shape bg-shape-1"></div>
     <div class="bg-shape bg-shape-2"></div>
     
     <div class="container text-center">
-        <h1 class="logo">LockPlot</h1>
-        <p class="tagline">The Future of Real Estate Priority Access</p>
+        <!-- Logo -->
+        <div class="logo-container">
+            <img src="logo-dark.svg" alt="LockPlot">
+        </div>
+        
         <p class="coming-soon">Coming Soon</p>
+        <h1 class="tagline">Priority Access Rights for Real Estate</h1>
+        <p class="subtitle">Be the first to know when properties become available</p>
         
         <!-- Email notification form -->
         <div class="email-form">
