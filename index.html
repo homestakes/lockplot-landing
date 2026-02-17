@@ -3,26 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="LockPlot - The future of real estate access. Coming soon.">
-    <meta name="keywords" content="LockPlot, real estate, early access, coming soon">
-    <title>LockPlot | Coming Soon</title>
-    
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css">
-    
+    <meta name="description" content="LockPlot is the pre-market marketplace where buyers secure exclusive first-offer rights on homes before they list. Join the waitlist.">
+    <meta name="keywords" content="LockPlot, real estate, pre-market, first offer rights, waitlist">
+    <title>LockPlot | The Pre-Market Marketplace</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="LockPlot | The Pre-Market Marketplace">
+    <meta property="og:description" content="Every home has a price. Even before it's for sale. Buyers secure exclusive first-offer rights. Owners unlock serious interest.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lockplot.com">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="LockPlot | The Pre-Market Marketplace">
+    <meta name="twitter:description" content="The pre-market marketplace for exclusive first-offer rights on homes.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="LP_logo_1.svg">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=Archivo:wght@400;500;600;700&family=Instrument+Serif&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=Archivo:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css">
+
     <style>
         :root {
-            /* LockPlot Brand Colors */
             --lp-primary: #C53557;
+            --lp-primary-dark: #9B2743;
             --lp-accent: #F2D69A;
-            --lp-secondary: #f5f4f8;
             --lp-gray-100: #f9f8fa;
             --lp-gray-200: #f5f4f8;
             --lp-gray-300: #efecf3;
@@ -32,331 +41,698 @@
             --lp-gray-700: #666276;
             --lp-gray-800: #454056;
             --lp-gray-900: #1f1b2d;
-            
-            /* Font Families */
-            --lp-font-family-primary: 'Inter Tight', sans-serif;
-            --lp-font-family-secondary: 'Archivo', sans-serif;
-            --lp-font-family-display: 'Instrument Serif', serif;
+            --lp-success: #07c98b;
+            --lp-font-primary: 'Inter Tight', sans-serif;
+            --lp-font-heading: 'Archivo', sans-serif;
+            --lp-font-display: 'Instrument Serif', serif;
+            --lp-ease: cubic-bezier(0.4, 0, 0.2, 1);
+            --lp-ease-decel: cubic-bezier(0, 0, 0.2, 1);
         }
-        
-        * {
+
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: var(--lp-font-family-primary);
+            font-family: var(--lp-font-primary);
             background: var(--lp-gray-100);
+            color: var(--lp-gray-900);
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ── Nav ── */
+        .lp-nav {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            color: var(--lp-gray-900);
-            position: relative;
-            overflow: hidden;
+            padding: 24px 40px;
         }
-        
-        /* Subtle gradient background */
-        .bg-gradient-subtle {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(197, 53, 87, 0.05) 0%, rgba(242, 214, 154, 0.08) 100%);
-            z-index: 0;
+
+        .lp-nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        
-        /* Animated accent shapes */
-        .bg-shape {
-            position: absolute;
-            opacity: 0.05;
+
+        .lp-nav-logo-icon {
+            height: 32px;
+            width: auto;
         }
-        
-        .bg-shape-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--lp-accent);
-            border-radius: 50%;
-            top: -200px;
-            right: -100px;
-            animation: float 20s ease-in-out infinite;
+
+        .lp-nav-logo-text {
+            height: 24px;
+            width: auto;
         }
-        
-        .bg-shape-2 {
-            width: 300px;
-            height: 300px;
-            background: var(--lp-primary);
-            border-radius: 50%;
-            bottom: -150px;
-            left: -50px;
-            animation: float 15s ease-in-out infinite reverse;
+
+        .lp-nav-pill {
+            font-family: var(--lp-font-heading);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--lp-gray-600);
+            background: var(--lp-gray-200);
+            padding: 6px 14px;
+            border-radius: 100px;
         }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(180deg); }
-        }
-        
-        .container {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .logo-container {
-            margin-bottom: 2rem;
+
+        /* ── Hero ── */
+        .lp-hero {
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            padding: 0 24px;
         }
-        
-        .logo-icon {
-            height: 50px;
-            width: auto;
+
+        /* Background: gold gradient wash (matches landing_v4 lp-bg-gradient-accent-to-light) */
+        .lp-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(242, 214, 154, 0.25) 0%, rgba(255, 255, 255, 0) 70%);
+            z-index: 0;
+            pointer-events: none;
         }
-        
-        .logo-text {
-            height: 35px;
-            width: auto;
+
+        /* Tile field canvas (landing_v4 animation) */
+        .lp-tile-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            display: block;
+            background: transparent;
+            opacity: 0.45;
         }
-        
-        .tagline {
-            font-family: var(--lp-font-family-display);
-            font-size: 2rem;
-            font-weight: 400;
-            margin-bottom: 1rem;
-            color: var(--lp-gray-800);
+
+        /* Hero content */
+        .lp-hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 720px;
+            width: 100%;
         }
-        
-        .subtitle {
-            font-family: var(--lp-font-family-primary);
-            font-size: 1.125rem;
-            font-weight: 400;
-            color: var(--lp-gray-600);
-            margin-bottom: 3rem;
+
+        /* Entrance animation: hidden by default */
+        .lp-anim {
+            opacity: 0;
+            transform: translateY(20px);
         }
-        
-        .coming-soon {
-            font-family: var(--lp-font-family-secondary);
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 3rem;
-            color: var(--lp-primary);
+
+        body.loaded .lp-anim {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s var(--lp-ease-decel), transform 0.5s var(--lp-ease-decel);
+        }
+
+        body.loaded .lp-anim-1 { transition-delay: 0.1s; }
+        body.loaded .lp-anim-2 { transition-delay: 0.2s; }
+        body.loaded .lp-anim-3 { transition-delay: 0.4s; }
+
+        .lp-eyebrow {
+            font-family: var(--lp-font-heading);
+            font-size: 13px;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--lp-primary);
+            margin-bottom: 24px;
         }
-        
-        .email-form {
-            max-width: 500px;
-            margin: 0 auto 3rem;
+
+        .lp-headline {
+            font-family: var(--lp-font-display);
+            font-size: 3.5rem;
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 48px;
         }
-        
-        .form-control {
-            background: white;
-            border: 1px solid var(--lp-gray-300);
-            color: var(--lp-gray-800);
-            padding: 14px 20px;
-            border-radius: 0.375rem;
-            font-size: 1rem;
-            font-family: var(--lp-font-family-primary);
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+        .lp-headline-muted {
+            color: var(--lp-gray-600);
         }
-        
-        .form-control:focus {
-            background: white;
-            border-color: var(--lp-primary);
-            box-shadow: 0 0 0 0.2rem rgba(197, 53, 87, 0.15);
+
+        /* ── Email Form ── */
+        .lp-form-wrap {
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        .lp-form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--lp-gray-700);
+            margin-bottom: 12px;
+        }
+
+        .lp-input {
+            display: block;
+            width: 100%;
+            padding: 16px 20px;
+            font-family: var(--lp-font-primary);
+            font-size: 16px;
             color: var(--lp-gray-900);
+            background: #fff;
+            border: 1px solid var(--lp-gray-300);
+            border-radius: 8px;
             outline: none;
+            transition: border-color 0.2s var(--lp-ease), box-shadow 0.2s var(--lp-ease);
         }
-        
-        .form-control::placeholder {
+
+        .lp-input::placeholder {
             color: var(--lp-gray-500);
         }
-        
-        .btn-notify {
-            background: var(--lp-primary);
-            color: white;
-            border: none;
-            padding: 14px 32px;
-            border-radius: 0.375rem;
-            font-weight: 600;
-            font-family: var(--lp-font-family-primary);
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 1rem;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+        .lp-input:focus {
+            border-color: var(--lp-primary);
+            box-shadow: 0 0 0 3px rgba(197, 53, 87, 0.1);
         }
-        
-        .btn-notify:hover {
-            background: #9B2743; /* shade of primary */
+
+        .lp-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            margin-top: 12px;
+            font-family: var(--lp-font-primary);
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            background: var(--lp-primary);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            transition: background 0.2s var(--lp-ease), transform 0.2s var(--lp-ease), box-shadow 0.2s var(--lp-ease);
+        }
+
+        .lp-btn:hover {
+            background: var(--lp-primary-dark);
             transform: translateY(-1px);
             box-shadow: 0 4px 8px rgba(197, 53, 87, 0.2);
-            color: white;
         }
-        
-        .social-links {
-            margin-top: 2rem;
+
+        .lp-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
         }
-        
-        .social-links a {
-            display: inline-block;
-            width: 44px;
-            height: 44px;
-            line-height: 44px;
-            text-align: center;
-            border-radius: 50%;
-            background: var(--lp-gray-200);
-            color: var(--lp-gray-600);
-            margin: 0 8px;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
+
+        .lp-btn[disabled] {
+            opacity: 0.7;
+            pointer-events: none;
         }
-        
-        .social-links a:hover {
-            background: var(--lp-primary);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .copyright {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.875rem;
+
+        .lp-form-helper {
+            margin-top: 12px;
+            font-size: 12px;
             color: var(--lp-gray-500);
         }
-        
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            .logo-icon {
-                height: 40px;
-            }
-            
-            .logo-text {
-                height: 28px;
-            }
-            
-            .tagline {
-                font-size: 1.5rem;
-            }
-            
-            .subtitle {
-                font-size: 1rem;
-            }
-            
-            .coming-soon {
-                font-size: 0.75rem;
-            }
-        }
-        
-        /* Form success message */
-        .success-message {
-            display: none;
-            background: #D4FFF0;
-            border: 1px solid #07c98b;
-            padding: 16px;
-            border-radius: 0.375rem;
-            margin-top: 20px;
+
+        /* Success / Error messages */
+        .lp-msg {
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 15px;
             color: var(--lp-gray-800);
-            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        
-        .success-message i {
-            color: #07c98b;
+
+        .lp-msg-success {
+            background: rgba(7, 201, 139, 0.08);
+            border: 1px solid rgba(7, 201, 139, 0.3);
+        }
+
+        .lp-msg-success i {
+            color: var(--lp-success);
+            font-size: 18px;
+        }
+
+        .lp-msg-error {
+            background: rgba(197, 53, 87, 0.06);
+            border: 1px solid rgba(197, 53, 87, 0.2);
+        }
+
+        .lp-msg-error i {
+            color: var(--lp-primary);
+            font-size: 18px;
+        }
+
+        .lp-msg-hidden {
+            display: none;
+        }
+
+        /* Form/message transition */
+        .lp-fade-out {
+            opacity: 0;
+            transform: translateY(-8px);
+            transition: opacity 0.3s var(--lp-ease), transform 0.3s var(--lp-ease);
+            pointer-events: none;
+        }
+
+        .lp-fade-in {
+            animation: fadeIn 0.4s var(--lp-ease-decel) 0.2s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Footer ── */
+        .lp-footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 32px 40px;
+            border-top: 1px solid var(--lp-gray-200);
+        }
+
+        .lp-footer-signature {
+            font-family: var(--lp-font-display);
+            font-style: italic;
+            font-size: 14px;
+            color: var(--lp-gray-500);
+            margin-bottom: 8px;
+        }
+
+        .lp-footer-copy {
+            font-size: 13px;
+            color: var(--lp-gray-400);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 991px) {
+            .lp-headline { font-size: 2.75rem; }
+        }
+
+        @media (max-width: 767px) {
+            .lp-nav { padding: 20px 24px; }
+            .lp-nav-logo-icon { height: 28px; }
+            .lp-nav-logo-text { height: 20px; }
+            .lp-headline { font-size: 2rem; margin-bottom: 36px; }
+            .lp-eyebrow { font-size: 11px; letter-spacing: 2px; margin-bottom: 20px; }
+            .lp-tile-canvas { display: none; }
+            .lp-footer { padding: 24px; }
+        }
+
+        @media (max-width: 575px) {
+            .lp-nav-pill { display: none; }
+        }
+
+        @media (max-width: 479px) {
+            .lp-headline { font-size: 1.75rem; }
+            .lp-input { padding: 14px 16px; }
+            .lp-btn { padding: 14px; }
+        }
+
+        /* ── Reduced motion ── */
+        @media (prefers-reduced-motion: reduce) {
+            .lp-anim {
+                opacity: 1;
+                transform: none;
+            }
+            body.loaded .lp-anim {
+                transition-duration: 0.01ms;
+            }
+            .lp-fade-in {
+                animation-duration: 0.01ms;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Subtle gradient background -->
-    <div class="bg-gradient-subtle"></div>
-    
-    <!-- Animated background shapes -->
-    <div class="bg-shape bg-shape-1"></div>
-    <div class="bg-shape bg-shape-2"></div>
-    
-    <div class="container text-center">
-        <!-- Logo -->
-        <div class="logo-container">
-            <img src="LP_logo_1.svg" alt="" class="logo-icon">
-            <img src="logo-text1.svg" alt="LockPlot" class="logo-text">
+    <!-- Nav -->
+    <nav class="lp-nav">
+        <div class="lp-nav-logo">
+            <img src="LP_logo_1.svg" alt="" class="lp-nav-logo-icon">
+            <img src="logo-text1.svg" alt="LockPlot" class="lp-nav-logo-text">
         </div>
-        
-        <p class="coming-soon">Coming Soon</p>
-        <h1 class="tagline">The Future of Residential Real Estate Access</h1>
-        <p class="subtitle">Be the first to know when properties become available</p>
-        
-        <!-- Email notification form -->
-        <div class="email-form">
-            <form id="notifyForm" action="https://formspree.io/f/xqalleva" method="POST">
-                <div class="input-group mb-3">
-                    <input 
-                        type="email" 
+        <span class="lp-nav-pill">Pre-Launch 2026</span>
+    </nav>
+
+    <!-- Hero -->
+    <main class="lp-hero">
+        <canvas class="lp-tile-canvas" id="tileCanvas"></canvas>
+        <div class="lp-hero-content">
+            <p class="lp-eyebrow lp-anim lp-anim-1">The Pre-Market Marketplace</p>
+
+            <h1 class="lp-headline lp-anim lp-anim-2">
+                Every Home Has a Price.<br>
+                <span class="lp-headline-muted">Even Before It's For Sale.</span>
+            </h1>
+
+            <div class="lp-form-wrap lp-anim lp-anim-3">
+                <form id="notifyForm" action="https://formspree.io/f/xqalleva" method="POST">
+                    <label class="lp-form-label" for="emailInput">Get early access to the LockPlot platform</label>
+                    <input
+                        type="email"
                         name="email"
-                        class="form-control" 
-                        placeholder="Enter your email for updates" 
+                        id="emailInput"
+                        class="lp-input"
+                        placeholder="name@company.com"
                         required
                         aria-label="Email address"
                     >
-                    <button class="btn btn-notify" type="submit">
-                        Notify Me
-                    </button>
+                    <button class="lp-btn" type="submit" id="submitBtn">Join the Waitlist</button>
+                </form>
+                <p class="lp-form-helper">Free for buyers and sellers. No spam, ever.</p>
+
+                <div class="lp-msg lp-msg-success lp-msg-hidden" id="successMsg">
+                    <i class="bi bi-check-circle"></i>
+                    You're on the list. We'll be in touch soon.
                 </div>
-            </form>
-            <div class="success-message">
-                <i class="bi bi-check-circle me-2"></i>
-                Thank you! We'll notify you when we launch.
+                <div class="lp-msg lp-msg-error lp-msg-hidden" id="errorMsg">
+                    <i class="bi bi-exclamation-circle"></i>
+                    Something went wrong. Please try again.
+                </div>
             </div>
         </div>
-        
-        <!-- Social links (optional - uncomment and add your links) -->
-        <!--
-        <div class="social-links">
-            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-            <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
-            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-        </div>
-        -->
-    </div>
-    
-    <p class="copyright">&copy; 2025 LockPlot. All rights reserved.</p>
-    
+    </main>
+
+    <!-- Footer -->
+    <footer class="lp-footer">
+        <p class="lp-footer-signature">Property power</p>
+        <p class="lp-footer-copy">&copy; 2026 LockPlot. All rights reserved.</p>
+    </footer>
+
+    <!-- GSAP (required for tile field animation) -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
     <script>
+        // Trigger entrance animations
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+
+            // Initialize geometric grid animation (skip on mobile)
+            var canvas = document.getElementById('tileCanvas');
+            if (canvas && window.innerWidth >= 768) {
+                var gridAnim = new GeometricGridAnimation(canvas);
+                gridAnim.start();
+            }
+        });
+
         // Formspree form handling
         document.getElementById('notifyForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            const form = this;
-            const data = new FormData(form);
-            
+
+            var form = this;
+            var btn = document.getElementById('submitBtn');
+            var successMsg = document.getElementById('successMsg');
+            var errorMsg = document.getElementById('errorMsg');
+
+            // Disable button
+            btn.disabled = true;
+            btn.textContent = 'Joining...';
+
+            // Hide any previous error
+            errorMsg.classList.add('lp-msg-hidden');
+            errorMsg.classList.remove('lp-fade-in');
+
             fetch(form.action, {
                 method: form.method,
-                body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            }).then(function(response) {
                 if (response.ok) {
-                    // Show success message
-                    document.querySelector('.success-message').style.display = 'block';
-                    
-                    // Clear form
-                    form.reset();
-                    
-                    // Hide message after 5 seconds
-                    setTimeout(() => {
-                        document.querySelector('.success-message').style.display = 'none';
-                    }, 5000);
+                    // Fade out form
+                    form.classList.add('lp-fade-out');
+                    document.querySelector('.lp-form-helper').classList.add('lp-fade-out');
+
+                    // Show success after form fades
+                    setTimeout(function() {
+                        form.style.display = 'none';
+                        document.querySelector('.lp-form-helper').style.display = 'none';
+                        successMsg.classList.remove('lp-msg-hidden');
+                        successMsg.classList.add('lp-fade-in');
+                    }, 300);
                 } else {
-                    alert('There was a problem submitting the form. Please try again.');
+                    btn.disabled = false;
+                    btn.textContent = 'Join the Waitlist';
+                    errorMsg.classList.remove('lp-msg-hidden');
+                    errorMsg.classList.add('lp-fade-in');
                 }
-            }).catch(error => {
-                alert('There was a problem submitting the form. Please try again.');
+            }).catch(function() {
+                btn.disabled = false;
+                btn.textContent = 'Join the Waitlist';
+                errorMsg.classList.remove('lp-msg-hidden');
+                errorMsg.classList.add('lp-fade-in');
             });
         });
+
+        // Simplified GeometricGridAnimation - grayscale, two edge houses, fade-in only
+        class GeometricGridAnimation {
+            constructor(canvas) {
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d');
+                this.isRunning = false;
+                this.animationFrame = null;
+                this.dpr = window.devicePixelRatio || 1;
+                this.gridCols = 49;
+                this.gridRows = 49;
+                this.shapeSize = 8;
+                this.shapeSpacing = 11;
+                this.colors = {
+                    edge: ['#FEF8E7', '#FBF0CF', '#F9E6B9'],
+                    mid: ['#F6DEA9', '#F2D69A', '#DCBD7B', '#C4A364'],
+                    core: ['#E87791', '#D75674', '#C53557', '#B32E4D', '#9B2743', '#701D32']
+                };
+                this.houseShape = {
+                    centerX: this.gridCols / 2,
+                    centerY: this.gridRows / 2,
+                    layers: [
+                        { scale: 1.0, density: 0.3 },
+                        { scale: 0.7, density: 0.6 },
+                        { scale: 0.4, density: 0.95 }
+                    ],
+                    baseWidth: 29, baseHeight: 20, roofHeight: 10,
+                    parcelSize: 5, parcelNoise: 0.15, seed: 42
+                };
+                this.shapes = [];
+                this.entranceDone = false;
+                this.resize();
+                this.handleResize = this.debounce(function() {
+                    this.shapes = [];
+                    this.resize();
+                    this.generateShapeGrid();
+                    if (this.entranceDone) {
+                        this.shapes.forEach(function(s) { s.opacity = s.targetOpacity; });
+                    }
+                    this.renderOnce();
+                }.bind(this), 250);
+                window.addEventListener('resize', this.handleResize);
+            }
+
+            debounce(func, wait) {
+                var timeout;
+                return function() {
+                    var args = arguments;
+                    clearTimeout(timeout);
+                    timeout = setTimeout(function() { func.apply(null, args); }, wait);
+                };
+            }
+
+            resize() {
+                this.dpr = window.devicePixelRatio || 1;
+                var dpr = this.dpr;
+                var rect = this.canvas.getBoundingClientRect();
+                this.cssWidth = rect.width;
+                this.cssHeight = rect.height;
+                this.canvas.width = this.cssWidth * dpr;
+                this.canvas.height = this.cssHeight * dpr;
+                this.width = this.canvas.width;
+                this.height = this.canvas.height;
+                this.ctx.setTransform(1, 0, 0, 1, 0, 0);
+                this.ctx.scale(dpr, dpr);
+                var viewportSize = Math.min(this.cssWidth, this.cssHeight);
+                this.shapeSize = Math.max(6, Math.min(10, viewportSize / 50));
+                this.shapeSpacing = this.shapeSize * 1.375;
+            }
+
+            pseudoNoise(x, y, seed) {
+                var n = Math.sin(x * 12.9898 + y * 78.233 + seed * 43.12) * 43758.5453;
+                return n - Math.floor(n);
+            }
+
+            isInHouseRectangle(col, row, scale) {
+                var s = this.houseShape;
+                var w = s.baseWidth * scale, h = s.baseHeight * scale;
+                return col >= s.centerX - w / 2 && col <= s.centerX + w / 2 &&
+                       row >= s.centerY - h / 2 && row <= s.centerY + h / 2;
+            }
+
+            isInHouseRoof(col, row, scale) {
+                var s = this.houseShape;
+                var w = s.baseWidth * scale, h = s.baseHeight * scale, roofH = s.roofHeight * scale;
+                var roofTop = s.centerY - h / 2 - roofH, roofBottom = s.centerY - h / 2;
+                if (row < roofTop || row > roofBottom) return false;
+                var progress = (row - roofTop) / roofH;
+                var halfW = w * progress / 2;
+                return col >= s.centerX - halfW && col <= s.centerX + halfW;
+            }
+
+            isInHouse(col, row, scale) {
+                return this.isInHouseRectangle(col, row, scale) || this.isInHouseRoof(col, row, scale);
+            }
+
+            getHouseLayer(col, row) {
+                var layers = this.houseShape.layers;
+                for (var i = layers.length - 1; i >= 0; i--) {
+                    if (this.isInHouse(col, row, layers[i].scale)) return i;
+                }
+                return null;
+            }
+
+            shouldHaveShape(row, col) {
+                var s = this.houseShape;
+                if (this.getHouseLayer(col, row) === null) return false;
+                if ((col % s.parcelSize === 0 || row % s.parcelSize === 0) &&
+                    this.pseudoNoise(col, row, s.seed) < 0.3) return false;
+                if (this.pseudoNoise(col * 0.5, row * 0.5, s.seed + 1) < s.parcelNoise) return false;
+                return true;
+            }
+
+            calculateDensity(row, col) {
+                var layer = this.getHouseLayer(col, row);
+                if (layer === null) return 0;
+                var base = this.houseShape.layers[layer].density;
+                var v = this.pseudoNoise(col * 0.3, row * 0.3, this.houseShape.seed + 2);
+                return Math.max(0, Math.min(1, base + (v - 0.5) * 0.1));
+            }
+
+            getGrayscaleColor(row, col) {
+                var layer = this.getHouseLayer(col, row);
+                var seed = this.houseShape.seed;
+                var noise = this.pseudoNoise(col * 0.5, row * 0.5, seed + 3);
+                var palette;
+                if (layer === 2) palette = this.colors.core;
+                else if (layer === 1) palette = this.colors.mid;
+                else palette = this.colors.edge;
+                var hex = palette[Math.floor(noise * palette.length) % palette.length];
+                var r = parseInt(hex.slice(1, 3), 16);
+                var g = parseInt(hex.slice(3, 5), 16);
+                var b = parseInt(hex.slice(5, 7), 16);
+                var gray = Math.round(0.299 * r + 0.587 * g + 0.114 * b);
+                var h = gray.toString(16);
+                if (h.length === 1) h = '0' + h;
+                return '#' + h + h + h;
+            }
+
+            generateShapeGrid() {
+                this.shapes = [];
+                var cw = this.cssWidth, ch = this.cssHeight;
+                var gridW = this.gridCols * this.shapeSpacing;
+                var gridH = this.gridRows * this.shapeSpacing;
+                var centerY = (ch - gridH) / 2;
+
+                // Two houses: peeking symmetrically from left and right edges
+                var offsets = [
+                    { x: -gridW * 0.50 },  // Left: center at edge, right half visible
+                    { x: cw - gridW * 0.50 }  // Right: center at edge, left half visible
+                ];
+
+                for (var o = 0; o < offsets.length; o++) {
+                    var ox = offsets[o].x;
+                    for (var row = 0; row < this.gridRows; row++) {
+                        for (var col = 0; col < this.gridCols; col++) {
+                            if (!this.shouldHaveShape(row, col)) continue;
+                            var density = this.calculateDensity(row, col);
+                            if (Math.random() > density) continue;
+                            var x = ox + col * this.shapeSpacing;
+                            var y = centerY + row * this.shapeSpacing;
+                            // Skip shapes outside visible canvas
+                            if (x < -this.shapeSize || x > cw + this.shapeSize) continue;
+                            if (y < -this.shapeSize || y > ch + this.shapeSize) continue;
+                            var wobbleX = (Math.random() - 0.5) * 0.5;
+                            var wobbleY = (Math.random() - 0.5) * 0.5;
+                            this.shapes.push({
+                                x: x + wobbleX, y: y + wobbleY,
+                                isCircle: (row + col) % 2 === 0,
+                                color: this.getGrayscaleColor(row, col),
+                                opacity: 0,
+                                targetOpacity: 0.45 + (density * 0.20),
+                                size: this.shapeSize
+                            });
+                        }
+                    }
+                }
+            }
+
+            drawShape(shape) {
+                if (shape.opacity <= 0) return;
+                this.ctx.save();
+                this.ctx.globalAlpha = shape.opacity;
+                this.ctx.fillStyle = shape.color;
+                var size = shape.size;
+                if (shape.isCircle) {
+                    this.ctx.beginPath();
+                    this.ctx.arc(shape.x, shape.y, size / 2, 0, Math.PI * 2);
+                    this.ctx.fill();
+                } else {
+                    this.ctx.fillRect(shape.x - size / 2, shape.y - size / 2, size, size);
+                }
+                this.ctx.restore();
+            }
+
+            renderOnce() {
+                var w = this.cssWidth, h = this.cssHeight;
+                this.ctx.clearRect(0, 0, w, h);
+                for (var i = 0; i < this.shapes.length; i++) this.drawShape(this.shapes[i]);
+            }
+
+            // Render loop only runs during fade-in entrance
+            render() {
+                if (!this.isRunning) return;
+                this.renderOnce();
+                this.animationFrame = requestAnimationFrame(this.render.bind(this));
+            }
+
+            start() {
+                var self = this;
+                this.isRunning = true;
+                this.resize();
+                this.generateShapeGrid();
+
+                var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (prefersReducedMotion) {
+                    this.shapes.forEach(function(s) { s.opacity = s.targetOpacity; });
+                    this.entranceDone = true;
+                    this.renderOnce();
+                    return;
+                }
+
+                // Simple fade-in over 1.5s, then stop render loop
+                this.render();
+                gsap.to(this.shapes, {
+                    opacity: function(i, target) { return target.targetOpacity; },
+                    duration: 1.5,
+                    ease: 'power2.out',
+                    onComplete: function() {
+                        self.entranceDone = true;
+                        self.isRunning = false;
+                        if (self.animationFrame) {
+                            cancelAnimationFrame(self.animationFrame);
+                            self.animationFrame = null;
+                        }
+                        self.renderOnce();
+                    }
+                });
+            }
+        }
     </script>
 </body>
 </html>
